@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo">Fetch an api to change this text.</p>
+
+
+<script src="api.js"></script>
+
+<script>
+getText();
+
+async function getText() {
+//   let myObject = await fetch(file);
+//   let myText = await myObject.text();
+ 
+
+  fetch.get('https://pokeapi.co/api/v2/pokemon/ditto')
+  .then(function (response) {
+    // handle success
+    myText = response.data;
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    myText = error;
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+    console.log('done');
+  });
+
+  document.getElementById("demo").innerHTML = myText;
+}
+</script>
+
+</body>
+</html>
